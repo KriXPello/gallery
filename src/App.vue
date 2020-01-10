@@ -95,7 +95,6 @@ body {
 .image-block {
   margin: 10px;
   object-fit: cover;
-  position: relative;
   border: solid rgb(243, 243, 243) 1px;
   transition: all 300ms;
 }
@@ -111,11 +110,8 @@ body {
 }
 
 .image-block img {
-  position: absolute;
-  max-width: 100%;
-  max-height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
