@@ -72,11 +72,9 @@ body {
 
 .image-block {
   margin: 10px;
-  object-fit: cover;
   transition: all 300ms;
   padding-bottom: calc(100% - 20px);
   position: relative;
-  height: 0;
 }
 
 .image-block:hover {
@@ -85,7 +83,6 @@ body {
 }
 
 .image-block:active {
-  transition: all 100ms;
   transform: scale(1.01);
 }
 
