@@ -118,14 +118,4 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
-/* Анимации transition Vue */
-.list-enter-active, .list-leave-active {
-  transition: all 300ms;
-}
-
-.list-enter, .list-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
 </style>
