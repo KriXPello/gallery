@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const address = 'http://kuibarov.ru/images.json'
+const address = 'http://kuibarov.ru/images.json';
 
 export default new Vuex.Store({
   state: {

@@ -8,7 +8,7 @@
         class="image-block"
         :href="image"
       >
-        <img :src="image" alt="Изображение" @load="optimize">
+        <img :src="image" alt="Изображение">
       </a>
     </div>
 
@@ -33,38 +33,16 @@ export default {
   },
   methods: {
     ...mapActions(actions),
-    optimize() {
-      const wrapper = this.$el.querySelector('#wrapper');
-      const blocks = this.$el.querySelectorAll('.image-block');
-
-      const resizeWrapper = width => { // Функция для ресайзинга контейнера блоков с картинками
-        wrapper.setAttribute('style', `width: ${width}px`);
-      }
-
-      const resizeBlocks = side => { // Функция для ресайзинга блоков с картинками
-        blocks.forEach(el=> {
-          el.setAttribute('style', `width: ${side}px; height: ${side}px`);
-        });
-      }
-
-      const screenWidth = window.innerWidth;
-      const intWidth = Math.floor(screenWidth / 300) * 300; // Ширина, в которую помещается n блоков шириной 300px
-
-      resizeWrapper(intWidth >= 600 ? intWidth : screenWidth);
-      resizeBlocks(intWidth >= 600 ? 280 : screenWidth);
-    }
   },
   mounted() {
     this.getImages();
-
-    window.onresize = this.optimize;
   },
 }
 </script>
 
 <style>
 html {
-  font-size: 16px;
+  font-size: 1vw;
   font-family: 'Open Sans', sans-serif;
   color: #1F0A09;
 }
@@ -87,16 +65,18 @@ body {
 }
 
 #wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .image-block {
   margin: 10px;
   object-fit: cover;
-  border: solid rgb(243, 243, 243) 1px;
   transition: all 300ms;
+  padding-bottom: calc(100% - 20px);
+  position: relative;
+  height: 0;
 }
 
 .image-block:hover {
@@ -113,5 +93,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>
